@@ -33,9 +33,6 @@
 </head>
 <body>
 <a href="${pageContext.request.contextPath}/">홈으로</a>
-<%--    <c:forEach var="course" items="${courses}">--%>
-<%--        <p> <c:out value="${course}"></c:out></p>--%>
-<%--    </c:forEach>--%>
     <table border="1">
         <thead>
         <tr>
@@ -43,7 +40,6 @@
             <th>학기</th>
             <th>취득학점</th>
             <th>상세보기</th>
-            <!-- 추가적인 열을 필요에 따라 여기에 추가할 수 있습니다 -->
         </tr>
         </thead>
         <tbody>

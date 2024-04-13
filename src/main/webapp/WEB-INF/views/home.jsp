@@ -28,7 +28,7 @@
         .nav-item {
             margin-right: 50px;
             list-style-type: none;
-            font-size: 18px; /* 글꼴 크기 조정 */
+            font-size: 18px;
         }
 
         table {
@@ -74,16 +74,6 @@
 <form id="logout" action="<c:url value="/logout" /> " method="post">
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 </form>
-<%--  <p>--%>
-<%--    <a href="${pageContext.request.contextPath}/totalcredit">학년별 이수 학점 조회--%>
-<%--  </p>--%>
-<%--  <p>--%>
-<%--    <a href="${pageContext.request.contextPath}/addcourse">수강 신청하기</a>--%>
-<%--  </p>--%>
-<%--  <p>--%>
-<%--    <a href="${pageContext.request.contextPath}/inquirycourse">수강 신청 조회</a>--%>
-<%--  </p>--%>
-
 <table border="1">
     <thead>
     <tr>
