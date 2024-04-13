@@ -29,6 +29,7 @@
     </style>
 </head>
 <body>
+<a href="${pageContext.request.contextPath}/">홈으로</a>
 <table border="1">
     <thead>
     <tr>
@@ -54,6 +55,5 @@
     </c:forEach>
     </tbody>
 </table>
-<a href="${pageContext.request.contextPath}/">홈으로</a>
 </body>
 </html>

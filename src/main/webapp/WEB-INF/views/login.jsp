@@ -22,11 +22,19 @@
 <body>
 <div class="container">
     <form class="form-signin" method="post" action="<c:url value="/login" />">
-        <h2 class="form-signin-heading">Please sign in</h2>
+        <h2 class="form-signin-heading">Login Please</h2>
 
         <c:if test="${not empty errorMsg}">
             <div style="color: #ff0000;"> <h3> ${errorMsg} </h3></div>
         </c:if>
+
+        <script>
+            // errorMsg 요소가 존재하고 errorMsg가 비어있는 경우 해당 요소를 숨깁니다.
+            var errorMsgElement = document.getElementById('errorMsg');
+            if (errorMsgElement && errorMsgElement.innerText.trim() === '') {
+                errorMsgElement.style.display = 'none';
+            }
+        </script>
 
         <c:if test="${not empty logoutMsg}">
             <div style="color: #0000ff;" > <h3> ${logoutMsg} </h3></div>

@@ -18,7 +18,7 @@
         .navbar {
             position: fixed;
             width: 100%;
-            background-color: #f8f9fa;
+            background-color: #f3f3f5;
             top: 0;
             left: 0;
             z-index: 1000;
@@ -28,6 +28,7 @@
         .nav-item {
             margin-right: 50px;
             list-style-type: none;
+            font-size: 18px; /* 글꼴 크기 조정 */
         }
 
         table {
@@ -40,6 +41,15 @@
             border: none;
             width: 33.3%;
             padding: 20px;
+        }
+        th:not(:last-child),
+        td:not(:last-child) {
+            border-right: 1px solid black; /* 마지막 열을 제외한 우측 선 추가 */
+        }
+
+        tr:not(:last-child) th,
+        tr:not(:last-child) td {
+            border-bottom: 1px solid black; /* 마지막 행을 제외한 하단 선 추가 */
         }
     </style>
 </head>

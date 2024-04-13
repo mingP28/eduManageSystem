@@ -16,19 +16,23 @@
         }
 
         table {
-            width: 90%;
+            width: 80%;
             border-collapse: collapse;
-            margin-top: 50px;
-            margin-left: 30px;
+            margin-top: 30px;
+            margin-left: 50px;
             text-align: center;
         }
         th, td {
-            width: 22.5%;
+            width: 20%;
             padding: 20px;
+        }
+        tfoot td {
+            font-weight: bold; /* tfoot의 td에 글꼴 굵기를 적용 */
         }
     </style>
 </head>
 <body>
+<a href="${pageContext.request.contextPath}/">홈으로</a>
 <%--    <c:forEach var="course" items="${courses}">--%>
 <%--        <p> <c:out value="${course}"></c:out></p>--%>
 <%--    </c:forEach>--%>
@@ -61,6 +65,5 @@
         </tr>
         </tfoot>
     </table>
-<a href="${pageContext.request.contextPath}/">홈으로</a>
 </body>
 </html>
