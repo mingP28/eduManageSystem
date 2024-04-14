@@ -22,7 +22,7 @@ public class CourseDao {
 
     // 모든 교과 정보를 데이터베이스에서 조회해 리스트로 반환
     public List<Course> getCourses(){
-        String sqlStatement = "select * from Course order by year asc, semester asc";
+        String sqlStatement = "select * from Courses order by year asc, semester asc";
         return jdbcTemplate.query(sqlStatement, new RowMapper<Course>(){
             @Override
             public Course mapRow(ResultSet rs, int rowNum) throws SQLException{
@@ -42,7 +42,7 @@ public class CourseDao {
     }
     // 특정 년도와 학기에 해당하는 교과 정보를 리스트로 반환
     public List<Course> getDetailCourses(int year, int semester){
-        String sqlStatement = "select * from Course where year = ? and semester = ? order by year asc, semester asc";
+        String sqlStatement = "select * from Courses where year = ? and semester = ? order by year asc, semester asc";
         return jdbcTemplate.query(sqlStatement, new Object[]{year, semester}, new RowMapper<Course>() {
             @Override
             public Course mapRow(ResultSet rs, int rowNum) throws SQLException {
@@ -67,13 +67,13 @@ public class CourseDao {
         String instructor = course.getInstructor();
         int credit = course.getCredit();
 
-        String sqlStatement = "insert into Course(year, semester, course_code, course_title, course_type, instructor, credit) values (?, ?, ?, ?, ?, ?, ?)";
+        String sqlStatement = "insert into Courses(year, semester, course_code, course_title, course_type, instructor, credit) values (?, ?, ?, ?, ?, ?, ?)";
         return (jdbcTemplate.update(sqlStatement, new Object[] {year, semester, course_code, course_title, course_type, instructor, credit}) == 1);
     }
 
     // 학기별 이수학점을 계산해서 리스트로 반환
     public List<Course> calculateTotalCredits(){
-        String sqlStatement = "select year, semester, sum(credit) as totalCredit from Course where year != 2024 or semester != 2 group by year, semester";
+        String sqlStatement = "select year, semester, sum(credit) as totalCredit from Courses where year != 2024 or semester != 2 group by year, semester";
         return jdbcTemplate.query(sqlStatement, new RowMapper<Course>(){
             @Override
             public Course mapRow(ResultSet rs, int rowNum) throws SQLException{
