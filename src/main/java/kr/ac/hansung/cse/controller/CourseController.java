@@ -16,13 +16,10 @@ import java.util.List;
 
 @Controller
 public class CourseController {
-
-
-    // Controller -> Service -> Dao 이런 구조
     @Autowired
     private CourseService courseService;
 
-    @GetMapping("/totalcredit")
+    @GetMapping("/totalcredit") // 학년별 이수학점 조회하기 페이지
     public String showTotalCredits(Model model) {
         List<Course> totalCredits = courseService.getTotalCredits();
         int sumTotalCredits = courseService.getSumTotalCredits(totalCredits);
@@ -30,18 +27,18 @@ public class CourseController {
         model.addAttribute("totalSum", sumTotalCredits);
         return "totalcredit";
     }
-    @GetMapping("/detail/{year}/{semester}")
+    @GetMapping("/detail/{year}/{semester}") // totalcredit 페이지로 이동 후 상세보기 버튼을 누를 시 이동
     public String showDetailCourses(@PathVariable int year, @PathVariable int semester, Model model) {
         List<Course> courses = courseService.getDetailCourses(year, semester);
         model.addAttribute("detailCourses", courses);
         return "detailcourse";
     }
-    @GetMapping("/addcourse")
+    @GetMapping("/addcourse") // 수강 신청하기 페이지
     public String showAddCourse(Model model){
         model.addAttribute("course", new Course());
         return "addcourse";
     }
-    @PostMapping("/completeadd")
+    @PostMapping("/completeadd") // 수강 신청 완료시 나타나는 페이지
     public String completeAdd(Model model, @Valid Course course, BindingResult result) {
 
         // System.out.println(offer);
@@ -56,13 +53,11 @@ public class CourseController {
 
             return "addcourse";
         }
-
-        // Controller -> Service -> Dao
         courseService.insert(course);
 
         return "completeadd";
     }
-    @GetMapping("/inquirycourse")
+    @GetMapping("/inquirycourse") // 수강 신청 조회하는 페이지
     public String inquiryCourse(Model model){
         List<Course> courses = courseService.getAddCourse();
         model.addAttribute("addCourses", courses);
